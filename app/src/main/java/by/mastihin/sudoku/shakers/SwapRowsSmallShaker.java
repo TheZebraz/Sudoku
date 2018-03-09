@@ -1,4 +1,4 @@
-package by.mastihin.sudoku;
+package by.mastihin.sudoku.shakers;
 
 import java.util.Random;
 

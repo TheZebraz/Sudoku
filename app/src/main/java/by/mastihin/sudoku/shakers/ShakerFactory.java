@@ -1,4 +1,4 @@
-package by.mastihin.sudoku;
+package by.mastihin.sudoku.shakers;
 
 /**
  * Created by AndrewEvtukhov on 09.03.2018.

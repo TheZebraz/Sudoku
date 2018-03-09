@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import by.mastihin.sudoku.shakers.Shaker;
+import by.mastihin.sudoku.shakers.ShakerFactory;
+
 /**
  * Created by AndrewEvtukhov on 09.03.2018.
  */
