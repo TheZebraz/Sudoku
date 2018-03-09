@@ -14,7 +14,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int[][] sudoku = new int[9][9];
+        SudokuGenerator sudokuGenerator = new SudokuGenerator(9);
+        int[][] sudoku = sudokuGenerator.generateBaseMatrix();
 
         showGrid(sudoku);
     }
@@ -29,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         for (int i = 0, k = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++, k++) {
-                matrix[i][j] = k;
                 GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL, 1f),
                         GridLayout.spec(GridLayout.UNDEFINED, GridLayout.FILL, 1f));
                 TextView item = (TextView) LayoutInflater.from(this).inflate(R.layout.item_grid, null);
