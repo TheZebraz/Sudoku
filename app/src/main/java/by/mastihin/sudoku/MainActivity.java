@@ -15,9 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         SudokuGenerator sudokuGenerator = new SudokuGenerator(9);
-        int[][] sudoku = sudokuGenerator.generateBaseMatrix();
-
-        showGrid(sudoku);
+        showGrid(sudokuGenerator.generate());
     }
 
     private void showGrid(int[][] matrix) {
