@@ -2,10 +2,13 @@ package by.mastihin.sudoku.views;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.support.v7.widget.GridLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
 import by.mastihin.sudoku.R;
@@ -17,6 +20,14 @@ import by.mastihin.sudoku.R;
 public class SudokuView extends GridLayout {
 
     private int[][] matrix;
+    private Path path;
+    Paint paint;
+
+    private int w;
+    private int h;
+
+    private int childW;
+    private int childH;
 
     public SudokuView(Context context) {
         super(context);
@@ -34,7 +45,8 @@ public class SudokuView extends GridLayout {
     }
 
     private void init() {
-
+        path = new Path();
+        paint = new Paint();
     }
 
     public void setMatrix(int[][] matrix) {
@@ -58,12 +70,44 @@ public class SudokuView extends GridLayout {
     }
 
     @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        this.w = w;
+        this.h = h;
+
+
+    }
+
+    @Override
+    protected void onMeasure(int widthSpec, int heightSpec) {
+        super.onMeasure(widthSpec, heightSpec);
+        if (this.getChildCount() > 0) {
+            View child = getChildAt(2);
+            childW = child.getMeasuredWidth();
+            childH = child.getMeasuredHeight();
+        }
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-//        Path path = new Path();
-//        path
-//        canvas.drawPath();
-//        canvas.drawLines();
+        int strokeWidth = 10;
+
+        paint.setStrokeWidth(strokeWidth);
+        paint.setColor(Color.BLACK);
+
+        int squaresCount = (int) Math.sqrt(matrix.length);
+        int squareSize = (h - getPaddingTop() - getPaddingBottom()) / squaresCount;
+
+        for (int i = 0; i < squaresCount + 1; i++) {
+            //vertical
+            canvas.drawLine(getPaddingLeft() + i * squareSize, getPaddingTop(),
+                    getPaddingLeft() + i * squareSize, h - getPaddingBottom(), paint);
+            //horizontal
+            canvas.drawLine(getPaddingLeft() - strokeWidth / 2,
+                    getPaddingTop() + i * squareSize, w - getPaddingRight() + strokeWidth / 2, getPaddingTop() + i * squareSize, paint);
+        }
+
     }
 }

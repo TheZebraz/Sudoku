@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final SudokuGenerator sudokuGenerator = new SudokuGenerator(9);
+        final SudokuGenerator sudokuGenerator = new SudokuGenerator(9   );
         View view = findViewById(R.id.generate);
         showGrid(sudokuGenerator.generate());
         view.setOnClickListener(new View.OnClickListener() {

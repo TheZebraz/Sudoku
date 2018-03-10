@@ -35,7 +35,7 @@ public class SudokuGenerator {
         ShakerFactory shakerFactory = new ShakerFactory();
         List<Shaker> shakers = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10000; i++) {
             shakers.add(shakerFactory.getShaker(random.nextInt(4 - 1) + 1));
         }
         return shakers;

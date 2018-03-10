@@ -2,6 +2,8 @@ package by.mastihin.sudoku;
 
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 /**
@@ -12,6 +14,9 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+        Random random = new Random();
+        for (int i = 0; i < 1000; i++) {
+            System.out.println(random.nextInt(4 - 1) + 1);
+        }
     }
 }
